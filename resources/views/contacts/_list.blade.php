@@ -210,7 +210,7 @@
 
 
         // Delete The Contact
-        $(document).on('click', '.delete-contact', function(e) {
+        $('.delete-contact').on('click', function(e) {
             e.preventDefault();
 
             let contactId = $(this).data('contact_id');

@@ -21,7 +21,7 @@ class CustomfieldController extends Controller
        $validated = $this->service->validateCustomFieldData($request);
 
        $customField = $this->service->createCustomField($validated);
-       $this->service->assignValuesToContacts($customField, $validated['contact_id'], $request->all());
+       $this->service->assignValuesToContacts($customField, $validated['contact_id'], $request);
 
        return response()->json(['success' => true, 'message' => 'Custom field added successfully.']);
     }

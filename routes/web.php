@@ -5,7 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomfieldController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('contacts.index');
 });
 
 Route::prefix('contacts')->group(function () {

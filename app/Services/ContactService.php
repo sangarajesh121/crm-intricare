@@ -69,7 +69,7 @@ class ContactService
         
         return  $request->validate([
             'name'   => 'required|string|max:100',
-            'email'  => 'required|max:150|unique:contacts,email,'.$request->id,
+            'email'  => 'required|max:150',
             'phone'  => 'required|string|max:30',
             'gender' => 'required|in:male,female,other',
             'profile_image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',

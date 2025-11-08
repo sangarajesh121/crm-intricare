@@ -15,11 +15,9 @@ class CustomFieldRepository
         return CustomField::findOrFail($id);
     }
     
-    public function findByKeyAndType(string $fieldName, string $fieldType): ?CustomField
+    public function findByKey(string $fieldKey): ?CustomField
     {
-        return CustomField::where('field_name', $fieldName)
-                          ->where('field_type', $fieldType)
-                          ->first();
+        return CustomField::where('field_key', $fieldKey)->first();
     } 
     
     

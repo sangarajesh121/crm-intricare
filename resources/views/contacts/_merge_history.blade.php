@@ -12,9 +12,14 @@
         <h6 class="m-3"><b>Custom Fields</b></h6>
         <ul class="list-group">
             @forelse($contact->customFieldValues as $field)
-            <li class="list-group-item">{{ $field->customFieldDetail->field_name }} : {{ $field->field_value }} 
+            <li class="list-group-item">{{ $field->customFieldDetail->field_name }}  
+                @if($field->customFieldDetail->field_type == 'file' && !empty($field->field_value))
+                {!! \App\Helpers\CommonHelper::viewuploadedfile($field->field_value) !!}
+                @else
+                {{ $field->field_value }} 
+                @endif
                 @if($field->field_origin != 'self' && is_null($contact->merged_into))
-                <small class="text-warning ml-4">{{$field->field_origin}}</small></li>
+                <small class="text-danger ml-4">{{$field->field_origin}}</small></li>
                 @endif
             @empty
             <li class="list-group-item text-muted">No custom fields</li>

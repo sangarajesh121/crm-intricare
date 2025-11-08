@@ -111,7 +111,7 @@
                 processData: false,
                 contentType: false,
                 success: function (response) {
-                    showToast('success', response.message || 'Contact saved successfully!');
+                    showToast(response.success === true ? 'success' : 'error' , response.message || 'Contact saved successfully!');
                     $('#contactModal').modal('hide');
                     loadContacts(); // refresh list dynamically
                 },

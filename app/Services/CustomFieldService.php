@@ -23,8 +23,8 @@ class CustomFieldService
     public function createCustomField(array $data)
     {
         //Check if field with same key and type exists
-        $customField = $this->customFieldRepo->findByKeyAndType($data['field_key'], $data['field_type']);
-        
+        $customField = $this->customFieldRepo->findByKey($data['field_key']);
+
         if(empty($customField)) {
             $customField = $this->customFieldRepo->createDefinition($data);
         }
@@ -43,8 +43,8 @@ class CustomFieldService
             }
         }
         
+        // dd($data);
         $value = $data['field_value'];
-
         // If field type is file, handle file upload
         if($customField->field_type === 'file' && $value) {
             $filePath = CommonHelper::uploadFile($value, 'contacts/custom_fields', 'public');
