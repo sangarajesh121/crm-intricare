@@ -3,16 +3,16 @@
     <div class="col-md-6 border-end">
         <img src="{{$contact->profile_image_url}}"  
                 class="rounded-circle mb-2" height="70">
-        <h6>{{ $contact->name }} <span>({{is_null($contact->merged_into) ? 'Master' : 'Secondary' }} Contact)</span></h6>
+        <h6>{{ $contact->name }} <span class="text-info">({{is_null($contact->merged_into) ? 'Master' : 'Secondary' }} Contact)</span></h6>
         <ul class="list-group">
-            <li class="list-group-item">Email : {{ $contact->email }}</li>
-            <li class="list-group-item">Phone : {{ $contact->phone }}</li>
-            <li class="list-group-item">Gender : {{ $contact->gender }}</li>
+            <li class="list-group-item"><b>Email</b> : {{ $contact->email }}</li>
+            <li class="list-group-item"><b>Phone</b> : {{ $contact->phone }}</li>
+            <li class="list-group-item"><b>Gender</b> : {{ $contact->gender }}</li>
         </ul>
-        <h6 class="m-3"><b>Custom Fields</b></h6>
+        <h6 class="m-3 text-info"><i>Custom Fields</i></h6>
         <ul class="list-group">
             @forelse($contact->customFieldValues as $field)
-            <li class="list-group-item">{{ $field->customFieldDetail->field_name }}  
+            <li class="list-group-item"><b>{{ $field->customFieldDetail->field_name }} - </b>  
                 @if($field->customFieldDetail->field_type == 'file' && !empty($field->field_value))
                 {!! \App\Helpers\CommonHelper::viewuploadedfile($field->field_value) !!}
                 @else
